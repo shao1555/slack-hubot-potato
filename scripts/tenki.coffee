@@ -1,9 +1,13 @@
 phantom = require 'phantom'
 cheerio = require 'cheerio'
+temp = require 'temp'
+fs = require 'fs'
+slackClient = require 'slack-client'
 
 # tenki.jp の天気画像を抜いてくる
 module.exports = (robot) ->
   robot.hear /tenki/i, (res) ->
+    temp.track()
     phantom.create().then (ph) ->
       ph.createPage().then (page) ->
         # TODO: 地点検索
@@ -18,6 +22,14 @@ module.exports = (robot) ->
                 width: rect.width,
                 height: rect.height
               ).then ->
-                # TODO: slack にアップロード
-                page.render('tmp/tenki.png');
-                phantom.exit();
+                screenShotFile = temp.path(suffix: '.png')
+                res.send(screenShotFile)
+                page.render(screenShotFile).then ->
+                  # TODO: slack にアップロード
+                  slackWebClient = new slackClient.WebClient(process.env.HUBOT_SLACK_TOKEN)
+                  slackWebClient.files.upload {file: fs.createReadStream(screenShotFile), channels: "##{res.envelope.room}"}, (error, info) ->
+                    if error != undefined
+                      console.log(error)
+                      res.send('アップロードに失敗しました')
+                    temp.cleanupSync()
+                    ph.exit()
