@@ -21,7 +21,7 @@
     "hubot-shipit": "^0.2.0",
     "hubot-slack": "^3.4.2",
     "hubot-slack-knowledge-graph": "^1.0.1",
-    "hubot-slack-tenki-jp": "^1.0.0",
+    "hubot-slack-tenki-jp": "^1.0.1",
     "phantom": "^2.0.0-alpha",
     "slack-client": "^2.0.2",
     "temp": "^0.8.3"
