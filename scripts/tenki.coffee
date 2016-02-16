@@ -1,7 +1,7 @@
 phantom = require 'phantom'
 cheerio = require 'cheerio'
 
-# tenki.jp の天気画像を抜いてくるnuitekuru
+# tenki.jp の天気画像を抜いてくる
 module.exports = (robot) ->
   robot.hear /tenki/i, (res) ->
     phantom.create().then (ph) ->
