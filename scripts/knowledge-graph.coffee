@@ -5,7 +5,7 @@ fs = require 'fs'
 slackClient = require 'slack-client'
 
 module.exports = (robot) ->
-  robot.hear /\? (.+)/i, (res) ->
+  robot.hear /^\? (.+)/i, (res) ->
     temp.track()
     phantom.create().then (ph) ->
       ph.createPage().then (page) ->

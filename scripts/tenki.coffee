@@ -6,7 +6,7 @@ slackClient = require 'slack-client'
 
 # tenki.jp の天気画像を抜いてくる
 module.exports = (robot) ->
-  robot.hear /tenki/i, (res) ->
+  robot.hear /^tenki/i, (res) ->
     temp.track()
     phantom.create().then (ph) ->
       ph.createPage().then (page) ->
