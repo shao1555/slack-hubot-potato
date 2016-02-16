@@ -5,6 +5,7 @@
   "author": "shao <s@shao.jp>",
   "description": "ぴこ〜",
   "dependencies": {
+    "cheerio": "^0.20.0",
     "hubot": "^2.18.0",
     "hubot-diagnostics": "0.0.1",
     "hubot-google-images": "^0.2.6",
@@ -17,7 +18,10 @@
     "hubot-rules": "^0.1.1",
     "hubot-scripts": "^2.16.2",
     "hubot-shipit": "^0.2.0",
-    "hubot-slack": "^3.4.2"
+    "hubot-slack": "^3.4.2",
+    "phantom": "^2.0.0-alpha",
+    "slack-client": "^2.0.2",
+    "temp": "^0.8.3"
   },
   "engines": {
     "node": "0.10.x"
